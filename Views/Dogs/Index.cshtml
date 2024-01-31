@@ -14,9 +14,23 @@ else
 	@foreach(var dog in Model)
 	{
 		<div class="dog-item">
-			<h2>@dog.Name</h2>
+			<a asp-controller="Dogs" asp-action="Details" asp-route-id="@dog.Id" ><h2>@dog.Name</h2></a>
 			<label>Favorite food: </label>
 			<span>@dog.FavFood </span>
+			
+			för att visa enskil dog.
+			@if(dog.IsAdopted) 
+			{
+				<h3>This dog found a happy home</h3>
+			}
+			else
+			{
+				<br />
+				<a class="btn btn -primary" asp-controller="Dogs" asp-action="Adopt" asp-route-id="@dog.Id" >Adopt Dog</a>
+			}
+
+			<hr />
+
 		</div>
 	}
 
